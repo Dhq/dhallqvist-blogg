@@ -2,7 +2,7 @@ title: Daniel Hallqvist
 description: Just another blog about web and system development
 
 url: http://brianmaierjr.github.com/long-haul
-baseurl: ""
+baseurl: "/dhallqvist.github.io"
 paginate_path: "blog/page:num/"
 permalink: blog/:title/
 
@@ -23,6 +23,6 @@ social:
    twitter: dhallqvist
    facebook: danielhq
    email: dhallqvist91@gmail.com
-   linkedin: daniel-hallqvist-51257455 
+   linkedin: daniel-hallqvist-51257455
 
 google_analytics: "UA-58263416-1"
