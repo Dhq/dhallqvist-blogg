@@ -57,7 +57,6 @@ public static IHtmlString InlineSvg(this HtmlHelper helper, string path, IconCol
     return helper.Raw($"<span class='icon-color--{colorString}'>{svg}</span>");
 }
 ```
-Hei! Jeg har bestilt reise til New York 18 juni. 
 
 Here we have added an optional parameter with an enum containing the colors we wish to be available. The color passed in is used to set a css class on a wrapping span element. We can then create these in css classes, and simply set the fill property of the path element to the color we like:
 
