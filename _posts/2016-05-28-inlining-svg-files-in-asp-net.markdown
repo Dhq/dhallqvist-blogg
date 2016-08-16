@@ -6,7 +6,7 @@ date:   2016-05-28
 
 **Rendering your svg's by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don't have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an ASP .NET MVC project recently that turned out pretty well.**
 
-SVG's are a great for displaying vector graphics, like icons, that look crisp across all devices. These days we can also enjoy [great browser support](http://caniuse.com/#feat=svg). But using only svg-files loaded through an `<img />` can be a bit limitting. You can't for example change the color of the icon. To achieve this we need to inline the svg-code. Another perk gained from inlining the svg is that you save yourself from the extra network request, with the downside of getting a rather bloated html. But if you have a system for loading the inline svg markup, at least the developers wont have to deal with the bloat.
+SVG's are great for displaying vector graphics, like icons, that look crisp across all devices. These days we can also enjoy [great browser support](http://caniuse.com/#feat=svg). But using only svg-files loaded through an `<img />` can be a bit limitting. You can't for example change the color of the icon. To achieve this we need to inline the svg-code. Another perk gained from inlining the svg is that you save yourself from the extra network request, with the downside of getting a rather bloated html. But if you have a system for loading the inline svg markup, at least the developers wont have to deal with the bloat.
 
 The solution can be very simple. Here is an example I've used in ASP .NET MVC: We create a HtmlHelper extension method that simply gets the contents of the file requested, like so:
 
