@@ -5,8 +5,8 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Aug 2016 23:50:02 +0200</pubDate>
-    <lastBuildDate>Tue, 16 Aug 2016 23:50:02 +0200</lastBuildDate>
+    <pubDate>Tue, 16 Aug 2016 23:52:40 +0200</pubDate>
+    <lastBuildDate>Tue, 16 Aug 2016 23:52:40 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       
@@ -14,7 +14,7 @@
         <title>Inlining svg from file in ASP .NET</title>
         <description>&lt;p&gt;&lt;strong&gt;Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an ASP .NET MVC project recently that turned out pretty well.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;SVG’s are a great for displaying vector graphics, like icons, that look crisp across all devices. These days we can also enjoy &lt;a href=&quot;http://caniuse.com/#feat=svg&quot;&gt;great browser support&lt;/a&gt;. But using only svg-files loaded through an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img /&amp;gt;&lt;/code&gt; can be a bit limitting. You can’t for example change the color of the icon. To achieve this we need to inline the svg-code. Another perk gained from inlining the svg is that you save yourself from the extra network request, with the downside of getting a rather bloated html. But if you have a system for loading the inline svg markup, at least the developers wont have to deal with the bloat.&lt;/p&gt;
+&lt;p&gt;SVG’s are great for displaying vector graphics, like icons, that look crisp across all devices. These days we can also enjoy &lt;a href=&quot;http://caniuse.com/#feat=svg&quot;&gt;great browser support&lt;/a&gt;. But using only svg-files loaded through an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img /&amp;gt;&lt;/code&gt; can be a bit limitting. You can’t for example change the color of the icon. To achieve this we need to inline the svg-code. Another perk gained from inlining the svg is that you save yourself from the extra network request, with the downside of getting a rather bloated html. But if you have a system for loading the inline svg markup, at least the developers wont have to deal with the bloat.&lt;/p&gt;
 
 &lt;p&gt;The solution can be very simple. Here is an example I’ve used in ASP .NET MVC: We create a HtmlHelper extension method that simply gets the contents of the file requested, like so:&lt;/p&gt;
 
