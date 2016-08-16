@@ -10,5 +10,4 @@ title: About this blog
 	Other than that I am a bit too fond of tooling and fiddling with my .vimrc. </p>
 	<p> This blog is also a place for me to work on my writing, english and to document things I'm trying to learn as I go to increase the learning process. 
 	Hopefully, someone will find <em>something</em> useful here as well! </p>
-	<p>If anyone would like to get in touch, see the social icon links in the bottom right.</p>
 </div>

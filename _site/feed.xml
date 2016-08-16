@@ -5,23 +5,135 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Apr 2016 22:09:21 +0200</pubDate>
-    <lastBuildDate>Mon, 11 Apr 2016 22:09:21 +0200</lastBuildDate>
-    <generator>Jekyll v3.1.2</generator>
+    <pubDate>Mon, 30 May 2016 12:03:26 +0200</pubDate>
+    <lastBuildDate>Mon, 30 May 2016 12:03:26 +0200</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      
+      <item>
+        <title>Inlining svg from file in ASP .NET</title>
+        <description>&lt;p&gt;&lt;strong&gt;Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an ASP .NET MVC project recently that turned out pretty well.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;SVG’s are a great for displaying vector graphics, like icons, that look crisp across all devices. These days we can also enjoy &lt;a href=&quot;http://caniuse.com/#feat=svg&quot;&gt;great browser support&lt;/a&gt;. But using only svg-files loaded through an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img /&amp;gt;&lt;/code&gt; can be a bit limitting. You can’t for example change the color of the icon. To achieve this we need to inline the svg-code. Another perk gained from inlining the svg is that you save yourself from the extra network request, with the downside of getting a rather bloated html. But if you have a system for loading the inline svg markup, at least the developers wont have to deal with the bloat.&lt;/p&gt;
+
+&lt;p&gt;The solution can be very simple. Here is an example I’ve used in ASP .NET MVC: We create a HtmlHelper extension method that simply gets the contents of the file requested, like so:&lt;/p&gt;
+
+&lt;div class=&quot;language-cs highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHtmlString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;InlineSvg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HtmlHelper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsNullOrEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ArgumentException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Path can&#39;t be empty&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;EndsWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ArgumentException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Path must be to an svg file&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fullPath&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;~/Content/img/icons/&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ReadAllText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HostingEnvironment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fullPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then we can use it like this in our views:&lt;/p&gt;
+
+&lt;div class=&quot;language-cs highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;@Html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;InlineSvg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;arrow-right.svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here you can of course leave it to the caller to give the full path to the extension method, or even leave out the .svg extension from the file name parameter and add it in the extension method. It all boils down to personal preference.&lt;/p&gt;
+
+&lt;h3 id=&quot;supporting-different-colors&quot;&gt;Supporting different colors&lt;/h3&gt;
+&lt;p&gt;As previously stated, the big upside with inlining svg is that we can modify its fill colors from css. Here’s an idea on how to do that, with a simple change to our InlineSvg method:&lt;/p&gt;
+
+&lt;div class=&quot;language-cs highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IHtmlString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;InlineSvg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HtmlHelper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IconColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IconColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;White&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;IsNullOrEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ArgumentException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Path can&#39;t be empty&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;EndsWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;svg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ArgumentException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Path must be to an svg file&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;nameof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svg&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ReadAllText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HostingEnvironment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;MapPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colorString&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ToLowerInvariant&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;helper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;lt;span class=&#39;icon-color--{colorString}&#39;&amp;gt;{svg}&amp;lt;/span&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Hei! Jeg har bestilt reise til New York 18 juni.&lt;/p&gt;
+
+&lt;p&gt;Here we have added an optional parameter with an enum containing the colors we wish to be available. The color passed in is used to set a css class on a wrapping span element. We can then create these in css classes, and simply set the fill property of the path element to the color we like:&lt;/p&gt;
+
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;icon-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.icon-color--&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;icon-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#00f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;icon-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#f00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;icon-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We can now drop a bunch of svg icons in a folder, load them in with the HtmlHelper and set them to the color of our choice. Pretty handy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But isn’t it slow reading the file contents each time the InlineSvg() method is executed? Shouldn’t we at least cache the results of File.ReadAllText()?&lt;/strong&gt; 
+&lt;br /&gt;So we get the upside of not having to request the file through http, but that way at least the browser will usually cache the file for the second time the client requests it. Using the technique above, one might think that the extension method will go and read the file on disk every time the method is ran. Luckily though, the OS is pretty good at caching filesystem operations like this. I also ran some tests on the method, and it executed on avarage in about 0.0002ms. So in this case, implementnig caching here would be a classic case of pre mature optimization, make it more complex than it needs to be and introduce more challenges and issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;optimize-the-svgs&quot;&gt;Optimize the svg’s&lt;/h3&gt;
+&lt;p&gt;Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg’s to reduce the size of the file size of the html-document delivered from the server. 
+There are a few options for this, for example &lt;a href=&quot;http://petercollingridge.appspot.com/svg-optimiser&quot;&gt;this website&lt;/a&gt; and a bunch of different plugins for your build tool of choice like &lt;a href=&quot;https://github.com/ben-eb/gulp-svgmin&quot;&gt;gulp-svgmin&lt;/a&gt; and &lt;a href=&quot;https://github.com/sindresorhus/grunt-svgmin&quot;&gt;grunt-svgmin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;if-the-svg-comes-from-a-cms&quot;&gt;If the svg comes from a CMS&lt;/h3&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;For more reading on svg and it’s usage on the web, I recommend &lt;a href=&quot;https://css-tricks.com/using-svg/&quot;&gt;this css-tricks article&lt;/a&gt;.&lt;/p&gt;
+</description>
+        
+          <description>&lt;p&gt;&lt;strong&gt;Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an ASP .NET MVC project recently that turned out pretty well.&lt;/strong&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 28 May 2016 00:00:00 +0200</pubDate>
+        <link>http://brianmaierjr.github.com/long-haul/blog/inlining-svg-files-in-asp-net/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/inlining-svg-files-in-asp-net/</guid>
+        
+        
+      </item>
+      
     
       
       <item>
         <title>Todo lists and beyond with Workflowy</title>
         <description>&lt;p&gt;&lt;strong&gt;Around 8 months ago I read an article (can’t remember which one) about a tool called &lt;a href=&quot;http://workflowy.com&quot;&gt;Workflowy&lt;/a&gt;. I had a look at it and wasn’t very impressed at first, but the author was so enthusiastic I decided to give it a try anyway. I am very glad I did, so thought I’d give a short introduction.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;I love todo lists and have been using them for a long time. They are not just handy to demo javascript frameworks, I find there is no better way to help you organize, remember and execute tasks both in my personal life and at work. For a few years I felt that pen and paper was all I needed, so I had one list laying at my desk at work and one at home. I liked having the list always right in front of me at work, where I could quickly get an overview of what I needed to do. The problem with this approach, of course, is the lack of searchability and history. Also, my handwriting is a disgrace, so I decided I needed to try something digitald.&lt;/p&gt;
+&lt;p&gt;I love todo lists and have been using them for a long time. They are not just handy to demo javascript frameworks, I find there is no better way to help you organize, remember and execute tasks both in my personal life and at work. For a few years I felt that pen and paper was all I needed, so I had one list laying at my desk at work and one at home. I liked having the list always right in front of me at work, where I could quickly get an overview of what I needed to do. The problem with this approach, of course, is the lack of searchability and history. Also, my handwriting is a disgrace, so I decided I needed to try something digital.&lt;/p&gt;
 
 &lt;p&gt;I tried &lt;a href=&quot;http://wunderlist.com&quot;&gt;Wunderlist&lt;/a&gt; for a little while for work-related stuff, but I didn’t feel it added a lot. After all what I really lacked was organization of tasks, and a tool where I felt comfortable adding, moving, toggling and searching in. These are the primary things that Workflowy provded me with: organization and comfortability.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-basic-idea&quot;&gt;The basic idea&lt;/h3&gt;
 &lt;p&gt;The idea with Workflowy is very simple: you create lists that you can nest for as deep as you’d like. There is also the ability to search and tag list items. For me, this simple nesting was all I needed to keep my tasks organized.&lt;/p&gt;
 
-&lt;p&gt;What really makes Workflowy a pleasure to use though is its’ keybindings. To see all the keybindings available (there aren’t that many), you type &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + ?&lt;/code&gt;. I just kept this little window up all the time the first few weeks. The most important keybindings to learn I think are: Expand/Collapse &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + Down/Up&lt;/code&gt;, Move task &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + shift + up/down&lt;/code&gt;, Complete task &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + Enter&lt;/code&gt;, Toggle search &lt;code class=&quot;highlighter-rouge&quot;&gt;Esc&lt;/code&gt;, Show/hide completed &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + O&lt;/code&gt; navigating &lt;code class=&quot;highlighter-rouge&quot;&gt;alt + shift + arrow keys&lt;/code&gt;. Once these settle in you can navigate, add, complete, expand, search and move through your lists with speed and comfort. Of course there is also the option to click, if that’s what you’re in to…&lt;/p&gt;
+&lt;p&gt;What really makes Workflowy a pleasure to use though is its’ keybindings. To see all the keybindings available (there aren’t that many), you type &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + ?&lt;/code&gt;. I just kept this little window up all the time the first few weeks. The most important keybindings to learn I think are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Expand/Collapse: &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + Down/Up&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Move task: &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + shift + up/down&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Complete task: &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + Enter&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Toggle search: &lt;code class=&quot;highlighter-rouge&quot;&gt;Esc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Show/hide completed: &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + O&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Navigating: &lt;code class=&quot;highlighter-rouge&quot;&gt;alt + shift + arrow keys&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once these settle in you can navigate, add, complete, expand, search and move through your lists with speed and comfort. Of course there is also the option to click, if that’s what you’re in to…&lt;/p&gt;
 
 &lt;h3 id=&quot;how-i-use-it&quot;&gt;How I use it&lt;/h3&gt;
 &lt;p&gt;On Windows, which I use at work, I have added Workflowy as a Chrome app. This lets me pin it to the task bar, second from the left, so that I can access it with &lt;code class=&quot;highlighter-rouge&quot;&gt;Windows + 2&lt;/code&gt;. I also prefer having tools like this in an own application and not in a browser tab, makes it a lot easier to access. The structure of the lists are very simple, and I think it is very personal on how one would go about doing this, but I have it like this:&lt;/p&gt;
@@ -73,18 +185,32 @@ such as my exercising schedules, ideas on posts for this newly created blog, stu
       
       <item>
         <title>Hello world</title>
-        <description>&lt;p&gt;Hi there internet! My name is Daniel Hallqvist and I am a 23-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web development.&lt;/p&gt;
+        <description>&lt;p&gt;Hi there internet! My name is Daniel Hallqvist and I am a 24-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web development.&lt;/p&gt;
 
-&lt;p&gt;For the last couple of years I’ve kept hearing that all software developers should write blogs, both to spread knowledge and experiences but also to increase their own learning (and I am a firm believer that teaching others is the best way to learn yourself). And how many times haven’t I found solutions to annoying problems or gotten ideas on other peoples’ blogs? I guess it’s time to pay a little bit back, and after all I have always loved to write. For the longest time though I have thought that I’ve been too far from an expert to learn anyone else &lt;em&gt;anything&lt;/em&gt;. But  I’ve done some manning up and decided to give it a go anyway. ;)&lt;/p&gt;
+&lt;p&gt;For the last couple of years I’ve kept hearing that all software developers should write blogs, both to spread knowledge and experiences but also to increase their own learning (and I am a firm believer that teaching others is the best way to learn yourself). And how many times haven’t I found solutions to annoying problems or gotten ideas on other peoples’ blogs? I guess it’s time to pay a little bit back, and after all I have always kind of enjoyed writing. For the longest time though I have thought that I’ve been too far from an expert to learn anyone else &lt;em&gt;anything&lt;/em&gt;. But  I’ve done some manning up and decided to give it a go anyway. ;)&lt;/p&gt;
 
-&lt;p&gt;The experts say that you should narrow down the theme of the blog, find your niche in the blogosphere of developers… So let’s do the exact opposite! No, not really. But I think that if I narrowed it down too much it would end up with me not producing any posts, and god knows if I make it past two blog posts anyway. I think people can expect to primarily find posts about web development, javascript, .NET and CSS. I also do a bunch of development on CMS systems at work, such as Episerver and Sitecore, so there might be posts about those as well.&lt;/p&gt;
+&lt;p&gt;Topics I am thinking will be in focus in this blog are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Web development in general&lt;/li&gt;
+  &lt;li&gt;CSS/SASS&lt;/li&gt;
+  &lt;li&gt;Javascript / node&lt;/li&gt;
+  &lt;li&gt;.NET&lt;/li&gt;
+  &lt;li&gt;Productivity&lt;/li&gt;
+  &lt;li&gt;VIM&lt;/li&gt;
+  &lt;li&gt;Sitecore&lt;/li&gt;
+  &lt;li&gt;EpiServer&lt;/li&gt;
+  &lt;li&gt;Books on above topics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are all stuff that I either work with and/or are passionate about.&lt;/p&gt;
 
 &lt;p&gt;The blog is built on Jekyll, and I’m using the &lt;a href=&quot;https://github.com/brianmaierjr/long-haul&quot;&gt;Long Haul&lt;/a&gt; theme. Hopefully I will get around to creating my own theme some day, but this will do for now!&lt;/p&gt;
 
 &lt;p&gt;Since this is my first blog ever, I would love any feedback. Anyway, thank you lost souls of the internet who stumbled in to this dark corner of the web. Let’s see if I can make it past two posts! #lifegoals&lt;/p&gt;
 </description>
         
-          <description>&lt;p&gt;Hi there internet! My name is Daniel Hallqvist and I am a 23-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web development.&lt;/p&gt;
+          <description>&lt;p&gt;Hi there internet! My name is Daniel Hallqvist and I am a 24-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web development.&lt;/p&gt;
 
 </description>
         
