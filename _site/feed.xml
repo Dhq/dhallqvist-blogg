@@ -5,8 +5,8 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Aug 2016 23:28:43 +0200</pubDate>
-    <lastBuildDate>Tue, 16 Aug 2016 23:28:43 +0200</lastBuildDate>
+    <pubDate>Tue, 16 Aug 2016 23:50:02 +0200</pubDate>
+    <lastBuildDate>Tue, 16 Aug 2016 23:50:02 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       
@@ -64,7 +64,6 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;Hei! Jeg har bestilt reise til New York 18 juni.&lt;/p&gt;
 
 &lt;p&gt;Here we have added an optional parameter with an enum containing the colors we wish to be available. The color passed in is used to set a css class on a wrapping span element. We can then create these in css classes, and simply set the fill property of the path element to the color we like:&lt;/p&gt;
 
@@ -85,7 +84,8 @@
 &lt;p&gt;We can now drop a bunch of svg icons in a folder, load them in with the HtmlHelper and set them to the color of our choice. Pretty handy.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;But isn’t it slow reading the file contents each time the InlineSvg() method is executed? Shouldn’t we at least cache the results of File.ReadAllText()?&lt;/strong&gt; 
-&lt;br /&gt;So we get the upside of not having to request the file through http, but that way at least the browser will usually cache the file for the second time the client requests it. Using the technique above, one might think that the extension method will go and read the file on disk every time the method is ran. Luckily though, the OS is pretty good at caching filesystem operations like this. I also ran some tests on the method, and it executed on avarage in about 0.0002ms. So in this case, implementnig caching here would be a classic case of pre mature optimization, make it more complex than it needs to be and introduce more challenges and issues.&lt;/p&gt;
+&lt;br /&gt;So we get the upside of not having to request the file through http, but that way at least the browser will usually cache the file for the second time the client requests it. Using the technique above, one might think that the extension method will go and read the file on disk every time the method is ran. Luckily though, the OS is pretty good at caching filesystem operations like this. I also ran some tests on the method, and it executed on avarage in about 0.0002ms. So in this case, implementnig caching here would be a classic case of pre mature optimization, make it more complex than it needs to be and introduce more challenges and issues.
+A problem for sites with loads of svg’s loaded like this on every single page is of course that the file size on the html-reponses will get a bit large. But with not having to do the extra network requests and optimizing the svg’s, I think most projects will benefit anyway.&lt;/p&gt;
 
 &lt;h3 id=&quot;optimize-the-svgs&quot;&gt;Optimize the svg’s&lt;/h3&gt;
 &lt;p&gt;Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg’s to reduce the size of the file size of the html-document delivered from the server. 
@@ -115,11 +115,11 @@ There are a few options for this, for example &lt;a href=&quot;http://petercolli
         <title>Todo lists and beyond with Workflowy</title>
         <description>&lt;p&gt;&lt;strong&gt;Around 8 months ago I read an article (can’t remember which one) about a tool called &lt;a href=&quot;http://workflowy.com&quot;&gt;Workflowy&lt;/a&gt;. I had a look at it and wasn’t very impressed at first, but the author was so enthusiastic I decided to give it a try anyway. I am very glad I did, so thought I’d give a short introduction.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;I love todo lists and have been using them for a long time. They are not just handy to demo javascript frameworks, I find there is no better way to help you organize, remember and execute tasks both in my personal life and at work. For a few years I felt that pen and paper was all I needed, so I had one list laying at my desk at work and one at home. I liked having the list always right in front of me at work, where I could quickly get an overview of what I needed to do. The problem with this approach, of course, is the lack of searchability and history. Also, my handwriting is a disgrace, so I decided I needed to try something digital.&lt;/p&gt;
+&lt;p&gt;People keep hating on todo-lists and their apps these days, but I love them and have been using them for a long time. They are not just handy to demo javascript frameworks, I find there is no better way to help you organize, remember and execute tasks both in my personal life and at work. For a few years I felt that pen and paper was all I needed, so I had one list laying at my desk at work and one at home. I liked having the list always right in front of me at work, where I could quickly get an overview of what I needed to do. The problem with this approach, of course, is the lack of searchability and history. Also, my handwriting is a disgrace, so I decided I needed to try something digital.&lt;/p&gt;
 
 &lt;p&gt;I tried &lt;a href=&quot;http://wunderlist.com&quot;&gt;Wunderlist&lt;/a&gt; for a little while for work-related stuff, but I didn’t feel it added a lot. After all what I really lacked was organization of tasks, and a tool where I felt comfortable adding, moving, toggling and searching in. These are the primary things that Workflowy provded me with: organization and comfortability.&lt;/p&gt;
 
-&lt;h3 id=&quot;the-basic-idea&quot;&gt;The basic idea&lt;/h3&gt;
+&lt;h2 id=&quot;the-basic-idea&quot;&gt;The basic idea&lt;/h2&gt;
 &lt;p&gt;The idea with Workflowy is very simple: you create lists that you can nest for as deep as you’d like. There is also the ability to search and tag list items. For me, this simple nesting was all I needed to keep my tasks organized.&lt;/p&gt;
 
 &lt;p&gt;What really makes Workflowy a pleasure to use though is its’ keybindings. To see all the keybindings available (there aren’t that many), you type &lt;code class=&quot;highlighter-rouge&quot;&gt;cmd + ?&lt;/code&gt;. I just kept this little window up all the time the first few weeks. The most important keybindings to learn I think are:&lt;/p&gt;
@@ -207,7 +207,7 @@ such as my exercising schedules, ideas on posts for this newly created blog, stu
 
 &lt;p&gt;The blog is built on Jekyll, and I’m using the &lt;a href=&quot;https://github.com/brianmaierjr/long-haul&quot;&gt;Long Haul&lt;/a&gt; theme. Hopefully I will get around to creating my own theme some day, but this will do for now!&lt;/p&gt;
 
-&lt;p&gt;Since this is my first blog ever, I would love any feedback. Anyway, thank you lost souls of the internet who stumbled in to this dark corner of the web. Let’s see if I can make it past two posts! #lifegoals&lt;/p&gt;
+&lt;p&gt;Since this is my first blog ever, I would love any feedback. Anyway, thank you lost souls of the internet who stumbled in to this dark corner of the web. Let’s see if I can make it past two posts!&lt;/p&gt;
 </description>
         
           <description>&lt;p&gt;Hi there internet! My name is Daniel Hallqvist and I am a 24-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web development.&lt;/p&gt;
