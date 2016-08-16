@@ -79,6 +79,7 @@ We can now drop a bunch of svg icons in a folder, load them in with the HtmlHelp
 
 **But isn't it slow reading the file contents each time the InlineSvg() method is executed? Shouldn't we at least cache the results of File.ReadAllText()?** 
 <br />So we get the upside of not having to request the file through http, but that way at least the browser will usually cache the file for the second time the client requests it. Using the technique above, one might think that the extension method will go and read the file on disk every time the method is ran. Luckily though, the OS is pretty good at caching filesystem operations like this. I also ran some tests on the method, and it executed on avarage in about 0.0002ms. So in this case, implementnig caching here would be a classic case of pre mature optimization, make it more complex than it needs to be and introduce more challenges and issues.
+A problem for sites with loads of svg's loaded like this on every single page is of course that the file size on the html-reponses will get a bit large. But with not having to do the extra network requests and optimizing the svg's, I think most projects will benefit anyway.
 
 ### Optimize the svg's
 Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg's to reduce the size of the file size of the html-document delivered from the server. 
