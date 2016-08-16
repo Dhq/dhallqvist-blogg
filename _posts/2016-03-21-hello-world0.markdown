@@ -24,4 +24,4 @@ These are all stuff that I either work with and/or are passionate about.
 
 The blog is built on Jekyll, and I'm using the [Long Haul](https://github.com/brianmaierjr/long-haul) theme. Hopefully I will get around to creating my own theme some day, but this will do for now!
 
-Since this is my first blog ever, I would love any feedback. Anyway, thank you lost souls of the internet who stumbled in to this dark corner of the web. Let's see if I can make it past two posts! #lifegoals
+Since this is my first blog ever, I would love any feedback. Anyway, thank you lost souls of the internet who stumbled in to this dark corner of the web. Let's see if I can make it past two posts! 
