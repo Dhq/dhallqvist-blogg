@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <title>Daniel Hallqvist - Just another development blog</title>
+  <title>Elm package install "Access is denied" error on Windows</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/dhallqvist.github.io/assets/img/favicon.ico" />
@@ -20,7 +20,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/dhallqvist.github.io/assets/css/style.css">
   <!--[if IE 8]><link rel="stylesheet" href="/dhallqvist.github.io/assets/css/ie.css"><![endif]-->
-  <link rel="canonical" href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/">
+  <link rel="canonical" href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/elm-package-install-access-denied/">
 
   <!-- Modernizr -->
   <script src="/dhallqvist.github.io/assets/js/modernizr.custom.15390.js" type="text/javascript"></script>
@@ -65,39 +65,39 @@ ga('send', 'pageview');
 
    <div class="content">
       <div class="container">
-         <div class="home" id="home">
-  <h1 class="pageTitle">Recent Posts</h1>
-  <ul class="posts noList">
-    
-      <li>
-        <span class="date">May 28, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/elm-package-install-access-denied/">Elm package install "Access is denied" error on Windows</a></h3>
-        <p class="description">So this weekend I decided to get try out the Elm programming language. After having watched a bunch of presentations from enthusiastic people and getting psyched up, I began setting it up on my windows machine. I followed the installation guide an...</p>
-      </li>
-    
-      <li>
-        <span class="date">May 28, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/inlining-svg-files-in-asp-net/">Inlining svg from file in ASP .NET</a></h3>
-        <p class="description">Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an A...</p>
-      </li>
-    
-      <li>
-        <span class="date">March 24, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/workflowy/">Todo lists and beyond with Workflowy</a></h3>
-        <p class="description">Around 8 months ago I read an article (can’t remember which one) about a tool called Workflowy. I had a look at it and wasn’t very impressed at first, but the author was so enthusiastic I decided to give it a try anyway. I am very glad I did, so t...</p>
-      </li>
-    
-      <li>
-        <span class="date">March 21, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/hello-world0/">Hello world</a></h3>
-        <p class="description">Hi there internet! My name is Daniel Hallqvist and I am a 24-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web d...</p>
-      </li>
-    
-  </ul>
-  <!-- Pagination links -->
-  <div class="pagination">
-    
-    
+         <div class="post">
+  
+  <h1 class="postTitle">Elm package install "Access is denied" error on Windows</h1>
+  <p class="meta">May 28, 2016 | <span class="time">1</span> Minute Read</p>
+  
+  <p>So this weekend I decided to get try out the Elm programming language. After having watched a bunch of presentations from enthusiastic people and getting psyched up, I began setting it up on my windows machine. 
+I followed the <a href="http://elm-lang.org/install">installation guide</a> and so far so good. 
+But when I started to go through the tutorials on <a href="http://www.elm-tutorial.org/en/01-foundations/01-hello.html">elm-tutorial</a> 
+I ran into a brick wall immidietely when trying to install the first package: <code class="highlighter-rouge">elm package install elm-lang/html</code>. The error I got was:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>elm-package.exe: elm-lang-virtual-dom-7bdfbb4: MoveFileEx 
+"elm-lang-virtual-dom-7bdfbb4" "elm-lang\\virtual-dom\\1.1.1": 
+permission denied (Access is denied.)
+</code></pre>
+</div>
+
+<p>After a bunch of googling, ripping my hair out and the Elm-hype declining with drastic speed, it turned out that it was my <strong>McAfee anti-virus live-scanning</strong> that somehow blocked this operation.
+You can turn it off by opening McAfee &gt; Virus and Spyware protection &gt; Real-Time scanning off.
+So, it turned out this wasn’t Elm’s fault at all, phew.
+All is forgiven and the hype is at a max again! I have actually had this problem before, some cli-tool didn’t work because of McAfee’s live scanning.
+But seeing as McAfee often comes pre-installed on PC’s and usually goes pretty unnoticed, it’s not the first thing you suspect for errors like these.</p>
+
+<p>So, putting this here to potentially save someone else from this frustration. Now: Back to Elming…</p>
+
+
+  <!-- POST NAVIGATION -->
+  <div class="postNav clearfix">
+     
+      <a class="prev" href="/dhallqvist.github.io/blog/inlining-svg-files-in-asp-net/"><span>&laquo;&nbsp;Inlining svg from file in ASP .NET</span>
+      
+    </a>
+      
+     
   </div>
 </div>
 

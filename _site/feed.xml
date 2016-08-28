@@ -5,9 +5,47 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Aug 2016 23:52:40 +0200</pubDate>
-    <lastBuildDate>Tue, 16 Aug 2016 23:52:40 +0200</lastBuildDate>
+    <pubDate>Sun, 28 Aug 2016 14:01:12 +0200</pubDate>
+    <lastBuildDate>Sun, 28 Aug 2016 14:01:12 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      
+      <item>
+        <title>Elm package install &quot;Access is denied&quot; error on Windows</title>
+        <description>&lt;p&gt;So this weekend I decided to get try out the Elm programming language. After having watched a bunch of presentations from enthusiastic people and getting psyched up, I began setting it up on my windows machine. 
+I followed the &lt;a href=&quot;http://elm-lang.org/install&quot;&gt;installation guide&lt;/a&gt; and so far so good. 
+But when I started to go through the tutorials on &lt;a href=&quot;http://www.elm-tutorial.org/en/01-foundations/01-hello.html&quot;&gt;elm-tutorial&lt;/a&gt; 
+I ran into a brick wall immidietely when trying to install the first package: &lt;code class=&quot;highlighter-rouge&quot;&gt;elm package install elm-lang/html&lt;/code&gt;. The error I got was:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;elm-package.exe: elm-lang-virtual-dom-7bdfbb4: MoveFileEx 
+&quot;elm-lang-virtual-dom-7bdfbb4&quot; &quot;elm-lang\\virtual-dom\\1.1.1&quot;: 
+permission denied (Access is denied.)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After a bunch of googling, ripping my hair out and the Elm-hype declining with drastic speed, it turned out that it was my &lt;strong&gt;McAfee anti-virus live-scanning&lt;/strong&gt; that somehow blocked this operation.
+You can turn it off by opening McAfee &amp;gt; Virus and Spyware protection &amp;gt; Real-Time scanning off.
+So, it turned out this wasn’t Elm’s fault at all, phew.
+All is forgiven and the hype is at a max again! I have actually had this problem before, some cli-tool didn’t work because of McAfee’s live scanning.
+But seeing as McAfee often comes pre-installed on PC’s and usually goes pretty unnoticed, it’s not the first thing you suspect for errors like these.&lt;/p&gt;
+
+&lt;p&gt;So, putting this here to potentially save someone else from this frustration. Now: Back to Elming…&lt;/p&gt;
+</description>
+        
+          <description>&lt;p&gt;So this weekend I decided to get try out the Elm programming language. After having watched a bunch of presentations from enthusiastic people and getting psyched up, I began setting it up on my windows machine. 
+I followed the &lt;a href=&quot;http://elm-lang.org/install&quot;&gt;installation guide&lt;/a&gt; and so far so good. 
+But when I started to go through the tutorials on &lt;a href=&quot;http://www.elm-tutorial.org/en/01-foundations/01-hello.html&quot;&gt;elm-tutorial&lt;/a&gt; 
+I ran into a brick wall immidietely when trying to install the first package: &lt;code class=&quot;highlighter-rouge&quot;&gt;elm package install elm-lang/html&lt;/code&gt;. The error I got was:&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 28 May 2016 00:00:00 +0200</pubDate>
+        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/elm-package-install-access-denied/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/elm-package-install-access-denied/</guid>
+        
+        
+      </item>
+      
     
       
       <item>
