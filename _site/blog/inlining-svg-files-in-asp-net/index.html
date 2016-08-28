@@ -68,7 +68,7 @@ ga('send', 'pageview');
          <div class="post">
   
   <h1 class="postTitle">Inlining svg from file in ASP .NET</h1>
-  <p class="meta">May 28, 2016 | <span class="time">5</span> Minute Read</p>
+  <p class="meta">May 28, 2016 | <span class="time">6</span> Minute Read</p>
   
   <p><strong>Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an ASP .NET MVC project recently that turned out pretty well.</strong></p>
 
@@ -150,8 +150,10 @@ A problem for sites with loads of svg’s loaded like this on every single page 
 There are a few options for this, for example <a href="http://petercollingridge.appspot.com/svg-optimiser">this website</a> and a bunch of different plugins for your build tool of choice like <a href="https://github.com/ben-eb/gulp-svgmin">gulp-svgmin</a> and <a href="https://github.com/sindresorhus/grunt-svgmin">grunt-svgmin</a>.</p>
 
 <h3 id="if-the-svg-comes-from-a-cms">If the svg comes from a CMS</h3>
-
-<h3 id="summary">Summary</h3>
+<p>If the svg’s are editable through a CMS, they will most likely not be served from your application root which makes the reading from disk.. difficult. The project I was on was pretty heavy on svg icons, and the editors needed
+to be able to pick the color from the cms as well. So we found a solution creating an angular directive that we decorated the <img />-tags with that basically hid the image, sent a http-request to the images url 
+and got the content of the svg then inserted it to the dom with the correct css-class surrounding it (depending on what color it was supposed to be) and showing it once all this was completed.
+This is not very pretty, but works if the feature is needed. If anyone has found better solutions to this I’d love to hear them.</p>
 
 <p>For more reading on svg and it’s usage on the web, I recommend <a href="https://css-tricks.com/using-svg/">this css-tricks article</a>.</p>
 

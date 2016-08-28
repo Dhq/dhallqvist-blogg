@@ -86,8 +86,9 @@ Even if the method to get the file contents is fast, it is definitely a good ide
 There are a few options for this, for example [this website](http://petercollingridge.appspot.com/svg-optimiser) and a bunch of different plugins for your build tool of choice like [gulp-svgmin](https://github.com/ben-eb/gulp-svgmin) and [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin).
 
 ### If the svg comes from a CMS
-
-### Summary
-
+If the svg's are editable through a CMS, they will most likely not be served from your application root which makes the reading from disk.. difficult. The project I was on was pretty heavy on svg icons, and the editors needed
+to be able to pick the color from the cms as well. So we found a solution creating an angular directive that we decorated the <img />-tags with that basically hid the image, sent a http-request to the images url 
+and got the content of the svg then inserted it to the dom with the correct css-class surrounding it (depending on what color it was supposed to be) and showing it once all this was completed.
+This is not very pretty, but works if the feature is needed. If anyone has found better solutions to this I'd love to hear them.
 
 For more reading on svg and it's usage on the web, I recommend [this css-tricks article](https://css-tricks.com/using-svg/).
