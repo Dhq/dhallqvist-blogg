@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <title>Elm package install "Access is denied" error on Windows</title>
+  <title>Dim/fade inactive splits in Atom</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/dhallqvist.github.io/assets/img/favicon.ico" />
@@ -20,7 +20,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/dhallqvist.github.io/assets/css/style.css">
   <!--[if IE 8]><link rel="stylesheet" href="/dhallqvist.github.io/assets/css/ie.css"><![endif]-->
-  <link rel="canonical" href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/elm-package-install-access-denied/">
+  <link rel="canonical" href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/dim-inactive-splits-atom/">
 
   <!-- Modernizr -->
   <script src="/dhallqvist.github.io/assets/js/modernizr.custom.15390.js" type="text/javascript"></script>
@@ -67,40 +67,32 @@ ga('send', 'pageview');
       <div class="container">
          <div class="post">
   
-  <h1 class="postTitle">Elm package install "Access is denied" error on Windows</h1>
-  <p class="meta">August 28, 2016 | <span class="time">1</span> Minute Read</p>
+  <h1 class="postTitle">Dim/fade inactive splits in Atom</h1>
+  <p class="meta">September 03, 2016 | <span class="time">0</span> Minute Read</p>
   
-  <p>So this weekend I decided to get try out the Elm programming language. After having watched a bunch of presentations from enthusiastic people and getting psyched up, I began setting it up on my windows machine. 
-I followed the <a href="http://elm-lang.org/install">installation guide</a> and so far so good. 
-But when I started to go through the tutorials on <a href="http://www.elm-tutorial.org/en/01-foundations/01-hello.html">elm-tutorial</a> 
-I ran into a brick wall immidietely when trying to install the first package: <code class="highlighter-rouge">elm package install elm-lang/html</code>. The error I got was:</p>
+  <p>I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
+to write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.
+This makes it clear(er) which split that is currently active. Depending on what theme you use in Atom, this can be more or less obvious there as well.
+If you feel that it is <strong>less</strong> obvious, maybe this can help you:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>elm-package.exe: elm-lang-virtual-dom-7bdfbb4: MoveFileEx 
-"elm-lang-virtual-dom-7bdfbb4" "elm-lang\\virtual-dom\\1.1.1": 
-permission denied (Access is denied.)
+<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="nc">.pane</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.active</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="mi">.5</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre>
 </div>
 
-<p>After a bunch of googling, ripping my hair out and the Elm-hype declining with drastic speed, it turned out that it was my <strong>McAfee anti-virus live-scanning</strong> that somehow blocked this operation.
-You can turn it off by opening McAfee &gt; Virus and Spyware protection &gt; Real-Time scanning off.
-So, it turned out this wasn’t Elm’s fault at all, phew.
-All is forgiven and the hype is at a max again! I have actually had this problem before, some cli-tool didn’t work because of McAfee’s live scanning.
-But seeing as McAfee often comes pre-installed on PC’s and usually goes pretty unnoticed, it’s not the first thing you suspect for errors like these.</p>
+<p>Obviously, with as much or less opacity as you like. To quickly edit the atom stylesheet, run the <code class="highlighter-rouge">Application: Open your stylesheet</code> command in the command pallette (cmd/ctrl + shift + p).</p>
 
-<p>So, putting this here to potentially save someone else from this frustration. Now: Back to Elming…</p>
+<p><img src="/dhallqvist.github.io/assets/img/post-images/2016-09-03-dim-atom.gif" alt="Demo of dimming inactive pane" /></p>
 
 
   <!-- POST NAVIGATION -->
   <div class="postNav clearfix">
      
-      <a class="prev" href="/dhallqvist.github.io/blog/inlining-svg-files-in-asp-net/"><span>&laquo;&nbsp;Inlining svg from file in ASP .NET</span>
+      <a class="prev" href="/dhallqvist.github.io/blog/elm-package-install-access-denied/"><span>&laquo;&nbsp;Elm package install "Access is denied" error on Windows</span>
       
     </a>
       
-      
-      <a class="next" href="/dhallqvist.github.io/blog/dim-inactive-splits-atom/"><span>Dim/fade inactive splits in Atom&nbsp;&raquo;</span>
-       
-      </a>
      
   </div>
 </div>

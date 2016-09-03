@@ -5,9 +5,43 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 28 Aug 2016 14:25:00 +0200</pubDate>
-    <lastBuildDate>Sun, 28 Aug 2016 14:25:00 +0200</lastBuildDate>
+    <pubDate>Sat, 03 Sep 2016 16:53:21 +0200</pubDate>
+    <lastBuildDate>Sat, 03 Sep 2016 16:53:21 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      
+      <item>
+        <title>Dim/fade inactive splits in Atom</title>
+        <description>&lt;p&gt;I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
+to write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.
+This makes it clear(er) which split that is currently active. Depending on what theme you use in Atom, this can be more or less obvious there as well.
+If you feel that it is &lt;strong&gt;less&lt;/strong&gt; obvious, maybe this can help you:&lt;/p&gt;
+
+&lt;div class=&quot;language-scss highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.pane&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:not&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.active&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;opacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Obviously, with as much or less opacity as you like. To quickly edit the atom stylesheet, run the &lt;code class=&quot;highlighter-rouge&quot;&gt;Application: Open your stylesheet&lt;/code&gt; command in the command pallette (cmd/ctrl + shift + p).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/dhallqvist.github.io/assets/img/post-images/2016-09-03-dim-atom.gif&quot; alt=&quot;Demo of dimming inactive pane&quot; /&gt;&lt;/p&gt;
+</description>
+        
+          <description>&lt;p&gt;I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
+to write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.
+This makes it clear(er) which split that is currently active. Depending on what theme you use in Atom, this can be more or less obvious there as well.
+If you feel that it is &lt;strong&gt;less&lt;/strong&gt; obvious, maybe this can help you:&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 03 Sep 2016 00:00:00 +0200</pubDate>
+        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/dim-inactive-splits-atom/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/dim-inactive-splits-atom/</guid>
+        
+        
+      </item>
+      
     
       
       <item>
@@ -136,6 +170,12 @@ and got the content of the svg then inserted it to the dom with the correct css-
 This is not very pretty, but works if the feature is needed. If anyone has found better solutions to this I’d love to hear them.&lt;/p&gt;
 
 &lt;p&gt;For more reading on svg and it’s usage on the web, I recommend &lt;a href=&quot;https://css-tricks.com/using-svg/&quot;&gt;this css-tricks article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;EDIT 2016-09-03&lt;/strong&gt; 
+After writing this post, I’ve come across what is probably a better way of handling your svg-icons by inlining the icons markup with gulp/grunt and referring to them in the document with &lt;symbol&gt;.
+This is a much better way if you for example refer to the same icon multiple times. Read more about this here at&lt;/symbol&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://css-tricks.com/svg-symbol-good-choice-icons/&quot;&gt;css-tricks&lt;/a&gt;&lt;/p&gt;
 </description>
         
           <description>&lt;p&gt;&lt;strong&gt;Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an ASP .NET MVC project recently that turned out pretty well.&lt;/strong&gt;&lt;/p&gt;

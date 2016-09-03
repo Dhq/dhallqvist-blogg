@@ -92,3 +92,9 @@ and got the content of the svg then inserted it to the dom with the correct css-
 This is not very pretty, but works if the feature is needed. If anyone has found better solutions to this I'd love to hear them.
 
 For more reading on svg and it's usage on the web, I recommend [this css-tricks article](https://css-tricks.com/using-svg/).
+
+__EDIT 2016-09-03__ 
+After writing this post, I've come across what is probably a better way of handling your svg-icons by inlining the icons markup with gulp/grunt and referring to them in the document with <symbol id="">.
+This is a much better way if you for example refer to the same icon multiple times. Read more about this here at 
+
+[css-tricks](https://css-tricks.com/svg-symbol-good-choice-icons/)
