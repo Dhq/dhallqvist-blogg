@@ -5,14 +5,16 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 03 Sep 2016 16:53:21 +0200</pubDate>
-    <lastBuildDate>Sat, 03 Sep 2016 16:53:21 +0200</lastBuildDate>
+    <pubDate>Sat, 03 Sep 2016 16:59:21 +0200</pubDate>
+    <lastBuildDate>Sat, 03 Sep 2016 16:59:21 +0200</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       
       <item>
         <title>Dim/fade inactive splits in Atom</title>
-        <description>&lt;p&gt;I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
+        <description>&lt;p&gt;&lt;img src=&quot;/dhallqvist.github.io/assets/img/post-images/2016-09-03-dim-atom.gif&quot; alt=&quot;Demo of dimming inactive pane&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
 to write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.
 This makes it clear(er) which split that is currently active. Depending on what theme you use in Atom, this can be more or less obvious there as well.
 If you feel that it is &lt;strong&gt;less&lt;/strong&gt; obvious, maybe this can help you:&lt;/p&gt;
@@ -25,13 +27,9 @@ If you feel that it is &lt;strong&gt;less&lt;/strong&gt; obvious, maybe this can
 
 &lt;p&gt;Obviously, with as much or less opacity as you like. To quickly edit the atom stylesheet, run the &lt;code class=&quot;highlighter-rouge&quot;&gt;Application: Open your stylesheet&lt;/code&gt; command in the command pallette (cmd/ctrl + shift + p).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/dhallqvist.github.io/assets/img/post-images/2016-09-03-dim-atom.gif&quot; alt=&quot;Demo of dimming inactive pane&quot; /&gt;&lt;/p&gt;
 </description>
         
-          <description>&lt;p&gt;I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
-to write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.
-This makes it clear(er) which split that is currently active. Depending on what theme you use in Atom, this can be more or less obvious there as well.
-If you feel that it is &lt;strong&gt;less&lt;/strong&gt; obvious, maybe this can help you:&lt;/p&gt;
+          <description>&lt;p&gt;&lt;img src=&quot;/dhallqvist.github.io/assets/img/post-images/2016-09-03-dim-atom.gif&quot; alt=&quot;Demo of dimming inactive pane&quot; /&gt;&lt;/p&gt;
 
 </description>
         
