@@ -76,7 +76,7 @@ ga('send', 'pageview');
 
 <p>The solution can be very simple. Here is an example I’ve used in ASP .NET MVC: We create a HtmlHelper extension method that simply gets the contents of the file requested, like so:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">IHtmlString</span> <span class="nf">InlineSvg</span><span class="p">(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">helper</span><span class="p">,</span> <span class="kt">string</span> <span class="n">fileName</span><span class="p">)</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">IHtmlString</span> <span class="nf">InlineSvg</span><span class="p">(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">helper</span><span class="p">,</span> <span class="kt">string</span> <span class="n">fileName</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">fileName</span><span class="p">))</span>
     <span class="p">{</span>
@@ -96,7 +96,7 @@ ga('send', 'pageview');
 
 <p>Then we can use it like this in our views:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="n">@Html</span><span class="p">.</span><span class="nf">InlineSvg</span><span class="p">(</span><span class="s">"arrow-right.svg"</span><span class="p">)</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">@Html</span><span class="p">.</span><span class="nf">InlineSvg</span><span class="p">(</span><span class="s">"arrow-right.svg"</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -105,7 +105,7 @@ ga('send', 'pageview');
 <h3 id="supporting-different-colors">Supporting different colors</h3>
 <p>As previously stated, the big upside with inlining svg is that we can modify its fill colors from css. Here’s an idea on how to do that, with a simple change to our InlineSvg method:</p>
 
-<div class="language-cs highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">IHtmlString</span> <span class="nf">InlineSvg</span><span class="p">(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">helper</span><span class="p">,</span> <span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="n">IconColor</span> <span class="n">color</span> <span class="p">=</span> <span class="n">IconColor</span><span class="p">.</span><span class="n">White</span><span class="p">)</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="n">IHtmlString</span> <span class="nf">InlineSvg</span><span class="p">(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">helper</span><span class="p">,</span> <span class="kt">string</span> <span class="n">path</span><span class="p">,</span> <span class="n">IconColor</span> <span class="n">color</span> <span class="p">=</span> <span class="n">IconColor</span><span class="p">.</span><span class="n">White</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
     <span class="p">{</span>
@@ -125,7 +125,7 @@ ga('send', 'pageview');
 
 <p>Here we have added an optional parameter with an enum containing the colors we wish to be available. The color passed in is used to set a css class on a wrapping span element. We can then create these in css classes, and simply set the fill property of the path element to the color we like:</p>
 
-<div class="language-scss highlighter-rouge"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">icon-color</span><span class="p">(</span><span class="nv">$name</span><span class="o">,</span> <span class="nv">$color</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@mixin</span> <span class="nf">icon-color</span><span class="p">(</span><span class="nv">$name</span><span class="o">,</span> <span class="nv">$color</span><span class="p">)</span> <span class="p">{</span>
 <span class="nc">.icon-color--</span><span class="si">#{</span><span class="nv">$name</span><span class="si">}</span> <span class="p">{</span>
     <span class="nt">path</span> <span class="p">{</span>
       <span class="na">fill</span><span class="p">:</span> <span class="nv">$color</span><span class="p">;</span>

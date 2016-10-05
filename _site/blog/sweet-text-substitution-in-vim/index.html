@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <title>Daniel Hallqvist - Just another development blog</title>
+  <title>Sweet text substitution in Vim</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/dhallqvist.github.io/assets/img/favicon.ico" />
@@ -20,7 +20,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/dhallqvist.github.io/assets/css/style.css">
   <!--[if IE 8]><link rel="stylesheet" href="/dhallqvist.github.io/assets/css/ie.css"><![endif]-->
-  <link rel="canonical" href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/">
+  <link rel="canonical" href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/sweet-text-substitution-in-vim/">
 
   <!-- Modernizr -->
   <script src="/dhallqvist.github.io/assets/js/modernizr.custom.15390.js" type="text/javascript"></script>
@@ -65,51 +65,61 @@ ga('send', 'pageview');
 
    <div class="content">
       <div class="container">
-         <div class="home" id="home">
-  <h1 class="pageTitle">Recent Posts</h1>
-  <ul class="posts noList">
-    
-      <li>
-        <span class="date">October 05, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/sweet-text-substitution-in-vim/">Sweet text substitution in Vim</a></h3>
-        <p class="description">Substituting/replacing text in vim is powerful, fast and easy. But one thing that has really been lacking is a native and simple way to substitute texton a project wide level. There have been a few techniques, myself I used vim-easygrep plugin.But...</p>
-      </li>
-    
-      <li>
-        <span class="date">September 03, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/dim-inactive-splits-atom/">Dim/fade inactive splits in Atom</a></h3>
-        <p class="description">I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it isto write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.This...</p>
-      </li>
-    
-      <li>
-        <span class="date">August 28, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/elm-package-install-access-denied/">Elm package install "Access is denied" error on Windows</a></h3>
-        <p class="description">So this weekend I decided to get try out the Elm programming language. After having watched a bunch of presentations from enthusiastic people and getting psyched up, I began setting it up on my windows machine. I followed the installation guide an...</p>
-      </li>
-    
-      <li>
-        <span class="date">May 28, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/inlining-svg-files-in-asp-net/">Inlining svg from file in ASP .NET</a></h3>
-        <p class="description">Rendering your svg’s by inlining them can be very practical. But how to do it if all you have is a bunch of svg files, and you don’t have time or the knowledge to manually extract the inline code for each of them? Here is a solution I used in an A...</p>
-      </li>
-    
-      <li>
-        <span class="date">March 24, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/workflowy/">Todo lists and beyond with Workflowy</a></h3>
-        <p class="description">Around 8 months ago I read an article (can’t remember which one) about a tool called Workflowy. I had a look at it and wasn’t very impressed at first, but the author was so enthusiastic I decided to give it a try anyway. I am very glad I did, so t...</p>
-      </li>
-    
-      <li>
-        <span class="date">March 21, 2016</span>
-        <h3><a class="post-link" href="/dhallqvist.github.io/blog/hello-world0/">Hello world</a></h3>
-        <p class="description">Hi there internet! My name is Daniel Hallqvist and I am a 24-year-old web developer currently living in Bergen, Norway, however originally from Stockholm. I am currently employed at Knowit, doing consulting on .NET, javascript and all things web d...</p>
-      </li>
-    
-  </ul>
-  <!-- Pagination links -->
-  <div class="pagination">
-    
-    
+         <div class="post">
+  
+  <h1 class="postTitle">Sweet text substitution in Vim</h1>
+  <p class="meta">October 05, 2016 | <span class="time">2</span> Minute Read</p>
+  
+  <p>Substituting/replacing text in vim is powerful, fast and easy. But one thing that has really been lacking is a native and simple way to substitute text
+on a project wide level. There have been a few techniques, myself I used <a href="http://github.com/dkprice/vim-easygrep">vim-easygrep</a> plugin.
+But the plugin had its flaws, and didn’t let you easily create filters like only substituting in specific filetypes or folders. It also felt a bit
+annoying that a plugin was even needed.</p>
+
+<p>So, in Vim 7.4.858 a new command was added: <code class="highlighter-rouge">cdo</code>. What it does is that it lets you perform commands on the current items in the quicklist. I hadn’t
+heard about this until recently, when I got tired of vim-easygrep’s limitations and started looking for a new way to perform global searches during a
+huge variable refactoring in a sass-project. This means that we can populate the quicklist with our search friends
+<a href="https://github.com/mileszs/ack.vim">Ack</a> or <a href="https://github.com/rking/ag.vim">Ag</a>, using all the switches and options for filtering they offer,
+and then run our subsitute command. So you don’t have to write what you want to replace multiple times, an idea could be to yank it before running the search
+and then use &lt;Ctrl+0&gt; in command mode to get it from the yank register. If the cursor is standing on whatever you want to replace, get it from the word register
+with &lt;Ctrl+w&gt;. So say I want to replace “1333337” with “l33t” in all css-files under the “site” folder, it could look like this:</p>
+
+<ul>
+  <li>yank “1333337” from my current file</li>
+  <li><code class="highlighter-rouge">:Ag -G site* --css "1333337"</code> (&lt;Ctrl+0)&gt; to get blue from the yank register)</li>
+  <li><code class="highlighter-rouge">:cdo s/1333337/l33t/g</code></li>
+  <li><code class="highlighter-rouge">:wa</code> (Write/save all buffers)</li>
+  <li><code class="highlighter-rouge">:ccl</code> (to close the quicklist window, I have it bound to <leader>x)</leader></li>
+</ul>
+
+<p>As always it’s good to start with checking in to git, so you can easily undo if you cange your mind. Also, you can of course add the c-switch to the substitute-command
+if you want to confirm before all changes. I tried creating a simple vimscript-function that does all these steps with two arguments, but vimscript is still terrible
+and I didn’t have the patience to tackle with it right now, maybe some other day! :)</p>
+
+<p>Another, general, tip that comes in handy when performing these search/replaces is <code class="highlighter-rouge">q:</code> (no, not :q). This opens the command history window, with
+your latest commands on each row. Now you can navigate and edit the lines like in any other vim window, and then press enter to run it.
+Handy if you performed a search, made a typo and want to quickly fix it and run the command again without having to type it all over.</p>
+
+<p>Here are some other, pluginless, bindings I use to subsitute within the current file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">"Substitute word under cursor on current line</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="k">sl</span> <span class="p">:</span>s<span class="sr">/&lt;c-r&gt;=expand("&lt;cword&gt;")&lt;cr&gt;/</span>/<span class="k">g</span><span class="p">&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+
+<span class="c">" Substitute word under cursor in current file</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="k">sf</span> <span class="p">:</span>%s<span class="sr">/&lt;c-r&gt;=expand("&lt;cword&gt;")&lt;cr&gt;/</span>/<span class="k">g</span><span class="p">&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</code></pre>
+</div>
+
+<p>Happy to hear if anyone has other tips when it comes to <code class="highlighter-rouge">cdo</code> or substitution in vim!</p>
+
+
+  <!-- POST NAVIGATION -->
+  <div class="postNav clearfix">
+     
+      <a class="prev" href="/dhallqvist.github.io/blog/dim-inactive-splits-atom/"><span>&laquo;&nbsp;Dim/fade inactive splits in Atom</span>
+      
+    </a>
+      
+     
   </div>
 </div>
 
