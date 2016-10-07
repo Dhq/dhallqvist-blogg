@@ -3,7 +3,7 @@ layout: post
 title:  "Dim/fade inactive splits in Atom"
 date:   2016-9-3
 ---
-![Demo of dimming inactive pane](/dhallqvist.github.io/assets/img/post-images/2016-09-03-dim-atom.gif)
+![Demo of dimming inactive pane](/assets/img/post-images/2016-09-03-dim-atom.gif)
 
 I am a fan of both Vim and Atom. And even though I currently almost only use Vim for developing, I like how easy it is
 to write packages etc for Atom. One feature that I like with my Vim setup is how that the inactive splits/windows get a fade.
