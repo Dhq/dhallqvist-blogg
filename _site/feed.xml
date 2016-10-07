@@ -5,8 +5,8 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Oct 2016 17:18:37 +0200</pubDate>
-    <lastBuildDate>Fri, 07 Oct 2016 17:18:37 +0200</lastBuildDate>
+    <pubDate>Sat, 08 Oct 2016 00:22:01 +0200</pubDate>
+    <lastBuildDate>Sat, 08 Oct 2016 00:22:01 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       
@@ -33,7 +33,7 @@ with &amp;lt;Ctrl+w&amp;gt;. So say I want to replace “1333337” with “l33t
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:ccl&lt;/code&gt; (to close the quicklist window, I have it bound to &amp;lt;leader&amp;gt;x)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;As always it’s good to start to commit your changes before, so you can easily undo if you cange your mind. Also, you can of course add the c-switch to the substitute-command
+&lt;p&gt;As always it’s a good idea to begin with committing your changes before, so you can easily undo if you change your mind. Also, you can of course add the c-switch to the substitute-command
 if you want to confirm before all changes. I tried creating a simple vimscript-function that does all these steps with two arguments, but vimscript is still terrible
 and I didn’t have the patience to tackle with it right now, maybe some other day! :)&lt;/p&gt;
 

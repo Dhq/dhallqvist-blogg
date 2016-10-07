@@ -23,7 +23,7 @@ with <Ctrl+w>. So say I want to replace "1333337" with "l33t" in all css-files u
 * `:wa` (Write/save all buffers)
 * `:ccl` (to close the quicklist window, I have it bound to &lt;leader&gt;x)
 
-As always it's good to start to commit your changes before, so you can easily undo if you cange your mind. Also, you can of course add the c-switch to the substitute-command
+As always it's a good idea to begin with committing your changes before, so you can easily undo if you change your mind. Also, you can of course add the c-switch to the substitute-command
 if you want to confirm before all changes. I tried creating a simple vimscript-function that does all these steps with two arguments, but vimscript is still terrible
 and I didn't have the patience to tackle with it right now, maybe some other day! :)
 
