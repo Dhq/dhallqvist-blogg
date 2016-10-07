@@ -3,10 +3,10 @@
   <channel>
     <title>Daniel Hallqvist</title>
     <description>Just another blog about web and system development</description>
-    <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/</link>
-    <atom:link href="http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 05 Oct 2016 21:18:02 +0200</pubDate>
-    <lastBuildDate>Wed, 05 Oct 2016 21:18:02 +0200</lastBuildDate>
+    <link>http://brianmaierjr.github.com/long-haul/</link>
+    <atom:link href="http://brianmaierjr.github.com/long-haul/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 07 Oct 2016 17:03:18 +0200</pubDate>
+    <lastBuildDate>Fri, 07 Oct 2016 17:03:18 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       
@@ -62,8 +62,8 @@ annoying that a plugin was even needed.&lt;/p&gt;
 </description>
         
         <pubDate>Wed, 05 Oct 2016 00:00:00 +0200</pubDate>
-        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/sweet-text-substitution-in-vim/</link>
-        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/sweet-text-substitution-in-vim/</guid>
+        <link>http://brianmaierjr.github.com/long-haul/blog/sweet-text-substitution-in-vim/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/sweet-text-substitution-in-vim/</guid>
         
         
       </item>
@@ -94,8 +94,8 @@ If you feel that it is &lt;strong&gt;less&lt;/strong&gt; obvious, maybe this can
 </description>
         
         <pubDate>Sat, 03 Sep 2016 00:00:00 +0200</pubDate>
-        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/dim-inactive-splits-atom/</link>
-        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/dim-inactive-splits-atom/</guid>
+        <link>http://brianmaierjr.github.com/long-haul/blog/dim-inactive-splits-atom/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/dim-inactive-splits-atom/</guid>
         
         
       </item>
@@ -132,8 +132,8 @@ I ran into a brick wall immidietely when trying to install the first package: &l
 </description>
         
         <pubDate>Sun, 28 Aug 2016 00:00:00 +0200</pubDate>
-        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/elm-package-install-access-denied/</link>
-        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/elm-package-install-access-denied/</guid>
+        <link>http://brianmaierjr.github.com/long-haul/blog/elm-package-install-access-denied/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/elm-package-install-access-denied/</guid>
         
         
       </item>
@@ -241,8 +241,8 @@ This is a much better way if you for example refer to the same icon multiple tim
 </description>
         
         <pubDate>Sat, 28 May 2016 00:00:00 +0200</pubDate>
-        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/inlining-svg-files-in-asp-net/</link>
-        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/inlining-svg-files-in-asp-net/</guid>
+        <link>http://brianmaierjr.github.com/long-haul/blog/inlining-svg-files-in-asp-net/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/inlining-svg-files-in-asp-net/</guid>
         
         
       </item>
@@ -313,8 +313,8 @@ such as my exercising schedules, ideas on posts for this newly created blog, stu
 </description>
         
         <pubDate>Thu, 24 Mar 2016 00:00:00 +0100</pubDate>
-        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/workflowy/</link>
-        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/workflowy/</guid>
+        <link>http://brianmaierjr.github.com/long-haul/blog/workflowy/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/workflowy/</guid>
         
         
       </item>
@@ -353,8 +353,8 @@ such as my exercising schedules, ideas on posts for this newly created blog, stu
 </description>
         
         <pubDate>Mon, 21 Mar 2016 00:00:00 +0100</pubDate>
-        <link>http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/hello-world0/</link>
-        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/dhallqvist.github.io/blog/hello-world0/</guid>
+        <link>http://brianmaierjr.github.com/long-haul/blog/hello-world0/</link>
+        <guid isPermaLink="true">http://brianmaierjr.github.com/long-haul/blog/hello-world0/</guid>
         
         
       </item>
