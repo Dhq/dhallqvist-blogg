@@ -5,8 +5,8 @@
     <description>Just another blog about web and system development</description>
     <link>http://brianmaierjr.github.com/long-haul/</link>
     <atom:link href="http://brianmaierjr.github.com/long-haul/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Oct 2016 17:11:12 +0200</pubDate>
-    <lastBuildDate>Fri, 07 Oct 2016 17:11:12 +0200</lastBuildDate>
+    <pubDate>Fri, 07 Oct 2016 17:12:47 +0200</pubDate>
+    <lastBuildDate>Fri, 07 Oct 2016 17:12:47 +0200</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       
@@ -213,25 +213,25 @@ I ran into a brick wall immidietely when trying to install the first package: &l
 
 &lt;p&gt;We can now drop a bunch of svg icons in a folder, load them in with the HtmlHelper and set them to the color of our choice. Pretty handy.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;But isn’t it slow reading the file contents each time the InlineSvg() method is executed? Shouldn’t we at least cache the results of File.ReadAllText()?&lt;/strong&gt; 
+&lt;p&gt;&lt;strong&gt;But isn’t it slow reading the file contents each time the InlineSvg() method is executed? Shouldn’t we at least cache the results of File.ReadAllText()?&lt;/strong&gt;
 &lt;br /&gt;So we get the upside of not having to request the file through http, but that way at least the browser will usually cache the file for the second time the client requests it. Using the technique above, one might think that the extension method will go and read the file on disk every time the method is ran. Luckily though, the OS is pretty good at caching filesystem operations like this. I also ran some tests on the method, and it executed on avarage in about 0.0002ms. So in this case, implementnig caching here would be a classic case of pre mature optimization, make it more complex than it needs to be and introduce more challenges and issues.
 A problem for sites with loads of svg’s loaded like this on every single page is of course that the file size on the html-reponses will get a bit large. But with not having to do the extra network requests and optimizing the svg’s, I think most projects will benefit anyway.&lt;/p&gt;
 
 &lt;h3 id=&quot;optimize-the-svgs&quot;&gt;Optimize the svg’s&lt;/h3&gt;
-&lt;p&gt;Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg’s to reduce the size of the file size of the html-document delivered from the server. 
+&lt;p&gt;Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg’s to reduce the size of the file size of the html-document delivered from the server.
 There are a few options for this, for example &lt;a href=&quot;http://petercollingridge.appspot.com/svg-optimiser&quot;&gt;this website&lt;/a&gt; and a bunch of different plugins for your build tool of choice like &lt;a href=&quot;https://github.com/ben-eb/gulp-svgmin&quot;&gt;gulp-svgmin&lt;/a&gt; and &lt;a href=&quot;https://github.com/sindresorhus/grunt-svgmin&quot;&gt;grunt-svgmin&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;if-the-svg-comes-from-a-cms&quot;&gt;If the svg comes from a CMS&lt;/h3&gt;
 &lt;p&gt;If the svg’s are editable through a CMS, they will most likely not be served from your application root which makes the reading from disk.. difficult. The project I was on was pretty heavy on svg icons, and the editors needed
-to be able to pick the color from the cms as well. So we found a solution creating an angular directive that we decorated the &lt;img /&gt;-tags with that basically hid the image, sent a http-request to the images url 
+to be able to pick the color from the cms as well. So we found a solution creating an angular directive that we decorated the &lt;img /&gt;-tags with that basically hid the image, sent a http-request to the images url
 and got the content of the svg then inserted it to the dom with the correct css-class surrounding it (depending on what color it was supposed to be) and showing it once all this was completed.
 This is not very pretty, but works if the feature is needed. If anyone has found better solutions to this I’d love to hear them.&lt;/p&gt;
 
 &lt;p&gt;For more reading on svg and it’s usage on the web, I recommend &lt;a href=&quot;https://css-tricks.com/using-svg/&quot;&gt;this css-tricks article&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;EDIT 2016-09-03&lt;/strong&gt; 
-After writing this post, I’ve come across what is probably a better way of handling your svg-icons by inlining the icons markup with gulp/grunt and referring to them in the document with &lt;symbol&gt;.
-This is a much better way if you for example refer to the same icon multiple times. Read more about this here at&lt;/symbol&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EDIT 2016-09-03&lt;/strong&gt;
+After writing this post, I’ve come across what is probably a better way of handling your svg-icons by inlining the icons markup with gulp/grunt and referring to them in the document with &amp;lt;symbol id=”“&amp;gt;.
+This is a much better way if you for example refer to the same icon multiple times. Read more about this here at&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://css-tricks.com/svg-symbol-good-choice-icons/&quot;&gt;css-tricks&lt;/a&gt;&lt;/p&gt;
 </description>

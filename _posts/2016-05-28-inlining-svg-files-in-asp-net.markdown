@@ -77,24 +77,24 @@ Here we have added an optional parameter with an enum containing the colors we w
 
 We can now drop a bunch of svg icons in a folder, load them in with the HtmlHelper and set them to the color of our choice. Pretty handy.
 
-**But isn't it slow reading the file contents each time the InlineSvg() method is executed? Shouldn't we at least cache the results of File.ReadAllText()?** 
+**But isn't it slow reading the file contents each time the InlineSvg() method is executed? Shouldn't we at least cache the results of File.ReadAllText()?**
 <br />So we get the upside of not having to request the file through http, but that way at least the browser will usually cache the file for the second time the client requests it. Using the technique above, one might think that the extension method will go and read the file on disk every time the method is ran. Luckily though, the OS is pretty good at caching filesystem operations like this. I also ran some tests on the method, and it executed on avarage in about 0.0002ms. So in this case, implementnig caching here would be a classic case of pre mature optimization, make it more complex than it needs to be and introduce more challenges and issues.
 A problem for sites with loads of svg's loaded like this on every single page is of course that the file size on the html-reponses will get a bit large. But with not having to do the extra network requests and optimizing the svg's, I think most projects will benefit anyway.
 
 ### Optimize the svg's
-Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg's to reduce the size of the file size of the html-document delivered from the server. 
+Even if the method to get the file contents is fast, it is definitely a good idea to optimize the svg's to reduce the size of the file size of the html-document delivered from the server.
 There are a few options for this, for example [this website](http://petercollingridge.appspot.com/svg-optimiser) and a bunch of different plugins for your build tool of choice like [gulp-svgmin](https://github.com/ben-eb/gulp-svgmin) and [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin).
 
 ### If the svg comes from a CMS
 If the svg's are editable through a CMS, they will most likely not be served from your application root which makes the reading from disk.. difficult. The project I was on was pretty heavy on svg icons, and the editors needed
-to be able to pick the color from the cms as well. So we found a solution creating an angular directive that we decorated the <img />-tags with that basically hid the image, sent a http-request to the images url 
+to be able to pick the color from the cms as well. So we found a solution creating an angular directive that we decorated the <img />-tags with that basically hid the image, sent a http-request to the images url
 and got the content of the svg then inserted it to the dom with the correct css-class surrounding it (depending on what color it was supposed to be) and showing it once all this was completed.
 This is not very pretty, but works if the feature is needed. If anyone has found better solutions to this I'd love to hear them.
 
 For more reading on svg and it's usage on the web, I recommend [this css-tricks article](https://css-tricks.com/using-svg/).
 
-__EDIT 2016-09-03__ 
-After writing this post, I've come across what is probably a better way of handling your svg-icons by inlining the icons markup with gulp/grunt and referring to them in the document with <symbol id="">.
-This is a much better way if you for example refer to the same icon multiple times. Read more about this here at 
+__EDIT 2016-09-03__
+After writing this post, I've come across what is probably a better way of handling your svg-icons by inlining the icons markup with gulp/grunt and referring to them in the document with &lt;symbol id=""&gt;.
+This is a much better way if you for example refer to the same icon multiple times. Read more about this here at
 
 [css-tricks](https://css-tricks.com/svg-symbol-good-choice-icons/)
